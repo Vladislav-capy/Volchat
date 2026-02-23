@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Project</title>
+  <link rel="stylesheet" href="{{url_for('static',filename='CSS/main.css')}}" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <a href="{{url_for('create_room')}}"><button>Create a room</button></a>
+  <a href="{{url_for('log_out')}}"><button>Log out</button></a>
+
+
+  {%if notifications%}
+  <img src="{{url_for('static',filename='Icons/notification.png')}}" alt="" style="height: 30px;width: 30px;" id="img1">
+  {%else%}
+  <img src="{{url_for('static',filename='Icons/notifications.png')}}" alt="hello" style="height: 30px;width: 30px;" id="img2">
+  {%endif%}
+<div class="form_div">
+  {%for i in notifications%}
+  <form action="{{url_for('choice',notification_id=i.id)}}" class="notification-form" method="post">
+      <h3>{{i.Userfrom}} invites you to join the room "{{i.room_name}}"</h3>
+      <div class="div">
+    <button type="submit" value="Accept" name="Button">Accept</button>
+    <button type="submit" value="Decline" name="Button">Decline</button>
+  </div>
+  </form>
+  {%endfor%}
+</div>
+  <h1>Rooms</h1>
+  {%if show%}
+  <div class="create" id="create_room">
+    <form method="post" action="/create_room" id="create_form">
+      {%if error%}
+      <input type="text" placeholder="{{error}}" name="room_name" class="red" />
+      {%else%}
+      <input type="text" placeholder="Enter room name" name="room_name" />
+      {%endif%}
+      <button type="submit">Create room</button>
+      
+    </form>
+  </div>
+  {%endif%}
+  <div class="rooms" id="rooms">
+    {%for i in rooms%}
+    <div><a href="{{url_for('chat',room_id=i.room_id)}}"></div>
+    <div class="item">
+      <h3>{{i.room_name}}</h3>
+    </div></a>
+    <a href="{{url_for('del_room',room_id=i.room_id)}}"><img src="{{url_for('static',filename='Icons/bin.png')}}" class="bin"></a>
+    {%endfor%}
+  </div>
+  <script src="{{url_for('static',filename='app.js')}}"></script>
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>{{room_name}}</title>
+  <link rel="stylesheet" href="{{url_for('static',filename='CSS/room.css')}}" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <header>
+    <h2 style="text-align: center; color: white; font-size: 30px;">{{Users}} users</h2>
+    <form action="/">
+    <button type="submit" class="main_page">Main page</button>
+  </form>
+    <button type="none" class="invite" id="submit">Invite</button>
+  </header>
+  <div class="content">
+    <div class="messages">
+      {%for i in msg%}
+      <div class="item">
+        <div class="main">
+          <h3>"{{i.user_name}}"</h3>
+          <p>{{i.message}}</p>
+          {%if i.image%}
+          <img src="{{url_for('get_img',image_name=i.image)}}" alt="" style="width: 100px;">
+          {%endif%}
+        </div>
+        {%if i.mine%}
+        <div class="img">
+          <a href="{{url_for('delete_msg',message_id=i.Msg_id,room_id=i.room_id)}}"><img src="{{url_for('static',filename='Icons/bin.png')}}" alt="hello" class="bin"></a>
+        </div>
+        {%endif%}
+      </div>
+      {%endfor%}
+      <div class="create" id="create">
+      <form method="post" action="{{url_for('invite',room_id=room_id)}}" id="create_form" class="form">
+      {%if error%}
+      <input type="text" placeholder="{{error}}" name="user_name" class="red" />
+      {%else%}
+      <input type="text" placeholder="Enter user name" name="user_name" />
+      {%endif%}
+      <button type="submit" >Invite user</button>
+      </form>
+    </div>
+
+    {%if error%}
+    <div id="error">
+
+    </div>
+    {%endif%}
+      
+    </div>
+    <form action="{{url_for('message',room_id=room_id)}}" method="post" enctype="multipart/form-data">
+      <textarea name="message"></textarea>
+      <input type="file" name="Image" id="file" hidden>
+      <button id="Attach" type="button">Attach</button>
+      <button type="submit" class="send">Send</button>
+      
+    </form>
+  </div>
+<script src="{{url_for('static',filename='room.js')}}"></script>
+</body>
+
+</html>

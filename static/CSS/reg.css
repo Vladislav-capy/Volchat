@@ -1,0 +1,14 @@
+h2{
+    color: red;
+}
+input{
+    padding: 5px;
+    font-size: 15px;
+    border-radius: 20px;
+    opacity: 0.9;
+}
+body{
+    background-image: url("https://th.bing.com/th/id/OIP.8n7dPdgUGoXllIeuXyk90AHaEK?w=321&h=181&c=7&r=0&o=7&cb=12&dpr=1.3&pid=1.7&rm=3");
+    background-size: 100%;
+    text-align: center;
+}

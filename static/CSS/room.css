@@ -1,0 +1,110 @@
+form{
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    align-items: center;
+}
+textarea{
+    resize: vertical;
+    width: 100%;
+    height: 50px;
+    border-radius: 10px;
+    min-height: 15px;
+    padding: 10px;
+    background-color: aquamarine;
+}
+button{
+    height: 30px;
+    display: block;
+    background-color: cyan;
+    color: red;
+    padding: 5px;
+    font-size: 15px;
+    border-radius: 20px;
+    transition: background-color 0.5s ease;
+}
+button:hover {
+    background-color: rgb(0, 191, 255);
+}
+body{
+    background-color: rgb(29, 71, 84)
+}
+.item {
+    padding: 15px;
+    background-color: darkblue;
+    color: white;
+    width: 700px;
+    font-size: 15px;
+    text-align: center;
+    margin: 0;
+    word-wrap: break-word;
+} 
+.item:hover {
+    background-color: blue;
+    transition: 0.5s;
+    cursor: pointer;
+    color: yellow
+}
+.content{
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+h3{
+    text-align: center;
+}
+.messages{
+    overflow-y: auto;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(0, 41, 55);
+   
+}
+.messages::-webkit-scrollbar{
+    width: 5px;
+}
+.messages::-webkit-scrollbar-thumb{
+    background-color: aqua;
+}
+.bin{
+    width: 40px;
+    height: 40px;
+    float: right;
+    margin-top: -50px;
+}
+.bin:hover{
+    width: 45px;
+    height: 45px;
+    transition: 0.3s;
+}
+.main_page{
+    margin-right: 210px;
+    margin-top: -65px;
+}
+.invite{
+    margin-right: 240px;
+    margin-top: -20px;
+}
+.create{
+        position: fixed;
+        display: flex;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+}
+.form{
+    background-color: gainsboro;
+    padding: 20px;
+    border-radius: 10px;
+}
+.form input{
+border-radius: 10px;
+padding: 5px;
+margin-bottom: 10px;
+}
