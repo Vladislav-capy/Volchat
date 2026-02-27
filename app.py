@@ -2,6 +2,7 @@ import random
 from flask import Flask,render_template,request,redirect,url_for,session,send_from_directory
 from scripts import db
 from flask_socketio import SocketIO,emit
+import os
 import uuid
 app=Flask(__name__)
 app.config["SECRET_KEY"]="hello"
@@ -188,4 +189,4 @@ def choice(notification_id):
         db.delete_notification(notification_id)
         return redirect(url_for('main'))
     
-socket.run(app=app,port=5000,debug=True)
+socket.run(app=app,port=int(os.environ.get("PORT",5000)),debug=False)
