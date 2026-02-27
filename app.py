@@ -189,4 +189,4 @@ def choice(notification_id):
         db.delete_notification(notification_id)
         return redirect(url_for('main'))
     
-socket.run(app=app,port=int(os.environ.get("PORT",5000)),debug=False,allow_unsafe_werkzeug=True)
+socket.run(host="0.0.0.0",app=app,port=int(os.environ.get("PORT",5000)),debug=False,allow_unsafe_werkzeug=True)
